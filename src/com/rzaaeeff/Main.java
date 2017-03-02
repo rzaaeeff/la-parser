@@ -1,24 +1,27 @@
 package com.rzaaeeff;
 
 import com.rzaaeeff.core.Parser;
+import com.rzaaeeff.core.model.SubstringModel;
 import com.rzaaeeff.util.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
 
-    private static final String PATH = "";
-    private static final String FILENAME = "SourceCode";
-    private static final String EXTENSION = Constants.Extension.E1;
-
     public static void main(String[] args) {
-        File file = new File(PATH + FILENAME + "." + EXTENSION);
+        File sourceFile = new File("SourceCode.java");
 
         try {
-//            FileUtils.write(file, "test\ntest");
-            String code = FileUtils.read(file);
-            System.out.println(Parser.removeAllComments(code));
+            String code = FileUtils.read(sourceFile);
+            String parsedCode = Parser.removeSingleLineComments(code);
+
+            System.out.println("Source Code:\n" + code);
+            System.out.println("\nParsed Source Code:\n" + parsedCode);
+
+            // You may find extracted comments in ParserLog.txt file
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,4 @@
+Extracted single-line comments:
+// this is for testing
+// test
+// int d = 4;
