@@ -28,7 +28,6 @@ public class FileUtils {
         if (file == null || content == null)
             throw new NullPointerException();
 
-
         FileWriter writer = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         bufferedWriter.write(content);
