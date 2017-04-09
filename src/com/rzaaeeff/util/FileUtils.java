@@ -1,6 +1,9 @@
 package com.rzaaeeff.util;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Created by Rzaaeeff on 2/24/2017.
@@ -28,9 +31,16 @@ public class FileUtils {
         if (file == null || content == null)
             throw new NullPointerException();
 
-        FileWriter writer = new FileWriter(file);
-        BufferedWriter bufferedWriter = new BufferedWriter(writer);
-        bufferedWriter.write(content);
-        bufferedWriter.close();
+        try (FileWriter fileWriter = new FileWriter(file);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write(content);
+        }
+    }
+
+    public static void append(File file, String content) throws IOException {
+        if (file == null || content == null)
+            throw new NullPointerException();
+
+        Files.write(Paths.get(file.getPath()), content.getBytes(), StandardOpenOption.APPEND);
     }
 }

@@ -1,4 +1,10 @@
+
 Extracted single-line comments:
 // this is for testing
 // test
 // int d = 4;
+
+Extracted multi-line comments:
+/* This is multi-line comment */
+/* This is not single-line // comment */
+/*"This is string in multi-line "*/
