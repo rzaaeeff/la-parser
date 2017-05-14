@@ -22,19 +22,21 @@ public class Main {
             Parser.LOG_FILE.createNewFile();
 
             String code = FileUtils.read(sourceFile);
-            String rawCode = Parser.removeComments(code);
+//            String rawCode = Parser.removeComments(code);
+//
+//            System.out.println("Source Code:\n" + code);
+//            System.out.println("\nParsed Source Code:\n" + rawCode);
+//
+//            List<FieldModel> fields = Parser.getFields(rawCode);
+//
+//            System.out.println("\n\nFields:");
+//            for (FieldModel field : fields) {
+//                System.out.println(field.getType().toString()+ " "
+//                        + field.getName() + " "
+//                        + field.getValue());
+//            }
 
-            System.out.println("Source Code:\n" + code);
-            System.out.println("\nParsed Source Code:\n" + rawCode);
-
-            List<FieldModel> fields = Parser.getFields(rawCode);
-
-            System.out.println("\n\nFields:");
-            for (FieldModel field : fields) {
-                System.out.println(field.getType().toString()+ " "
-                        + field.getName() + " "
-                        + field.getValue());
-            }
+            Parser.run(code);
 
             // You may find extracted comments in ParserLog.txt file
         } catch (IOException e) {
