@@ -14,3 +14,7 @@ boolean bool1 = false;
 Boolean bool2 = true;
 char char1 = 'a';
 Character char2 = 'b';
+
+System.out.println("test");
+System.out.print("this is test too");
+System.out.print("continues");

@@ -75,6 +75,32 @@ public class StringUtils {
         return isSingleLineComment;
     }
 
+    public static String cleanCode(String content) {
+        content = StringUtils.realTrim(content);
+        content = content.replaceAll(" *= *", " = ");
+        content = content.replaceAll(" *; *", " ;");
+        content = content.replaceAll(" *, *", " , ");
+        String separator = System.lineSeparator();
+        content = content.replaceAll(" *" + separator + " *", " " + separator + " ");
+        content = content.replaceAll(" *\\( *", " \\( ");
+        content = content.replaceAll(" *\\) *", " \\) ");
+
+        return content;
+    }
+
+    public static String trimQuotes(String content) {
+        StringBuilder builder = new StringBuilder(content);
+
+        if (builder.charAt(0) == '"') {
+            builder.deleteCharAt(0);
+
+            if (builder.charAt(builder.length() - 1) == '"')
+                builder.deleteCharAt(builder.length() - 1);
+        }
+
+        return builder.toString();
+    }
+
     public static String realTrim(String content) {
         return content.replaceAll(" +", " ").trim();
     }

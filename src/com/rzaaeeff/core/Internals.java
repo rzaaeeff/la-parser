@@ -1,5 +1,7 @@
 package com.rzaaeeff.core;
 
+import com.rzaaeeff.core.model.FieldModel;
+
 /**
  * Created by Rzaaeeff on 2/24/2017.
  */
@@ -75,5 +77,10 @@ public class Internals {
         public String[] getKeywords() {
             return keywords;
         }
+    }
+
+    public static final class Functions {
+        public static final String PRINT = "System.out.print";
+        public static final String PRINTLN = "System.out.println";
     }
 }
