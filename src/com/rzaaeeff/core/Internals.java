@@ -79,8 +79,14 @@ public class Internals {
         }
     }
 
-    public static final class Functions {
+    public static final class Function {
         public static final String PRINT = "System.out.print";
         public static final String PRINTLN = "System.out.println";
     }
+
+    public static final class Statement {
+        public static final String IF = "if";
+        public static final String ELSE = "else";
+    }
+
 }

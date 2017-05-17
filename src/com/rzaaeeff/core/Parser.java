@@ -238,14 +238,32 @@ public class Parser {
         }
 
         String[] tokens = code.split(PATTERN_SPLIT_WITHOUT_STRINGS);
+        boolean lastIfStatementWasFalse = false;
 
         for (int i = 0; i < tokens.length; i++) {
             switch (tokens[i]) {
-                case Internals.Functions.PRINT:
-                    System.out.print(StringUtils.trimQuotes(tokens[i+2]));
+                case Internals.Statement.ELSE:
+                    if (lastIfStatementWasFalse)
+                        lastIfStatementWasFalse = false;
+                    else
+                        i += 6;
                     break;
-                case Internals.Functions.PRINTLN:
-                    System.out.println(StringUtils.trimQuotes(tokens[i+2]));
+                case Internals.Statement.IF:
+                    if (tokens[i + 2].equals("true")) {
+                        i += 3;
+                    } else {
+                        i += 5;
+                        lastIfStatementWasFalse = true;
+                    }
+
+                    break;
+                case Internals.Function.PRINT:
+                    System.out.print(StringUtils.trimQuotes(tokens[i + 2]));
+                    i += 3;
+                    break;
+                case Internals.Function.PRINTLN:
+                    System.out.println(StringUtils.trimQuotes(tokens[i + 2]));
+                    i += 3;
                     break;
             }
         }

@@ -17,4 +17,7 @@ Character char2 = 'b';
 
 System.out.println("test");
 System.out.print("this is test too");
-System.out.print("continues");
+System.out.println("continues");
+        
+if (true) System.out.println("This is in IF");
+else System.out.println("This is in ELSE");
