@@ -7,7 +7,9 @@ import com.rzaaeeff.util.StringUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by Rzaaeeff on 2/24/2017.
@@ -228,6 +230,25 @@ public class Parser {
         return fields;
     }
 
+    public static String[] replaceFieldsWithValues(String[] argTokens, List<FieldModel> fields) {
+        String[] tokens = Arrays.copyOf(argTokens, argTokens.length);
+        for (int i = 0; i < fields.size(); i++) {
+            int countOfOccurrences = 0;
+            for (int j = 0; j < tokens.length; j++) {
+                if (tokens[j].equals(fields.get(i).getName())) {
+                    countOfOccurrences++;
+
+                    // if it is not first occurrence
+                    if (countOfOccurrences > 1) {
+                        tokens[j] = String.valueOf(fields.get(i).getValue());
+                    }
+                }
+            }
+        }
+
+        return tokens;
+    }
+
     public static void run(String code) {
         code = removeComments(code);
         code = StringUtils.cleanCode(code);
@@ -238,6 +259,10 @@ public class Parser {
         }
 
         String[] tokens = code.split(PATTERN_SPLIT_WITHOUT_STRINGS);
+
+        // replace fields with their values
+        tokens = replaceFieldsWithValues(tokens, fields);
+
         boolean lastIfStatementWasFalse = false;
 
         for (int i = 0; i < tokens.length; i++) {

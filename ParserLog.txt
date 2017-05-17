@@ -3,6 +3,11 @@ Extracted single-line comments:
 // this is for testing
 // test
 // int d = 4;
+// simple print
+// print with field
+// print without new line
+// control statements
+// control statements with fields
 
 Extracted multi-line comments:
 /* This is multi-line comment */

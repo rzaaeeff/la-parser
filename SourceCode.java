@@ -15,9 +15,18 @@ Boolean bool2 = true;
 char char1 = 'a';
 Character char2 = 'b';
 
+// simple print
 System.out.println("test");
+// print with field
+System.out.println(str1);
+// print without new line
 System.out.print("this is test too");
 System.out.println("continues");
-        
+
+// control statements
 if (true) System.out.println("This is in IF");
 else System.out.println("This is in ELSE");
+
+// control statements with fields
+if (bool1) System.out.println("bool1 is true");
+else System.out.println("bool1 is false");
